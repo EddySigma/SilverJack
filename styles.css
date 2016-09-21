@@ -2,3 +2,18 @@ body {
     height: 100%;
     width: 100%;
 }
+
+.card {
+    height:96px;
+    width:71px;
+}
+
+.hand {
+    height:100px;
+    width:240px;
+}
+
+.player {
+    height:120px;
+    width:350px;
+}
