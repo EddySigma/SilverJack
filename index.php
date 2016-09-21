@@ -8,19 +8,49 @@
     <?php
         // Make card
         function displayCard($cardLocation){
-        echo "<img class='card' src='" . $cardLocation . "'>";
+            echo "<img class='card' src='" . $cardLocation . "'>";
         }
         
-        function displayHand($cards){
-            foreach ($cards as $card) {
-                displayCard($card);
+        function displayPlayerPic($playerLocation) {
+            echo "<img class='player' src='" . $playerLocation . "'>";
+        }
+        
+        function makeHand(){
+            $cardCount = rand(4,7);
+            $hand = array();
+            for($i = 0; $i < $cardCount; $i++) {
+                // get card
             }
         }
         
+        function calculateScore($hand) {
+            // add the values of the cards
+        }
+        
+        function displayHand($cards){
+            echo "<div class='hand'>"
+            foreach ($cards as $card) {
+                displayCard($card);
+            }
+            echo "</div>"
+        }
+        
+        function displayPlayer($player){
+            echo "<div class='hand'>";
+            
+            echo "</div>";
+        }
+        $player = array(
+                // name
+                "name" => "Ryo",
+                // picture
+                // hand
+                "hand" => $hand,
+                // score
+                "score" => //calculate Score
+            )
         
         displayCard("img/card_back.png");
-        //displayCard("img/clubs/1.png");
-        
         $cards = array("clubs","diamonds","hearts","spades");
         
         
