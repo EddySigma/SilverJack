@@ -990,21 +990,45 @@ $cardsArrayIndex = [
     }
     echo "<br />Score: ".$score4."<br /><br /></div>";
     
-    
-    if($score1 <= 42 && $score1 > $score2 && $score1 > $score3 && $score1 > $score4){
-        $winner = "Player 1";
+    $winner = "None";
+    if($score1 > $score2 && $score1 > $score3 && $score1 > $score4){
+        if($score1 <= 42){
+            if($winner != "None"){
+                $winner += " and Player 1";
+            }
+            else
+            $winner = "Player 1";
+        }
     }
     
-    if($score2 <= 42 && $score2 > $score1 && $score2 > $score3 && $score2 > $score4){
-        $winner = "Player 2";
+    if($score2 > $score1 && $score2 > $score3 && $score2 > $score4){
+        if($score2 <= 42){
+            if($winner != "None"){
+                $winner += " and Player 2";
+            }
+            else
+            $winner = "Player 2";
+        }
     }
     
-    if($score3 <= 42 && $score3 > $score1 && $score3 > $score2 && $score1 > $score4){
-        $winner = "Player 3";
+    if($score3 <= 42 && $score3 > $score1 && $score3 > $score2 && $score3 > $score4){
+        if($score3 <= 42){
+            if($winner != "None"){
+                $winner += " and Player 3";
+            }
+            else
+            $winner = "Player 3";
+        }
     }
     
     if($score4 <= 42 && $score4 > $score1 && $score4 > $score2 && $score4 > $score3){
-        $winner = "Player 2";
+        if($score4 <= 42){
+            if($winner != "None"){
+                $winner += " and Player 4";
+            }
+            else
+            $winner = "Player 4";
+        }
     }
     
     echo "The winner is ".$winner.".<br />";
