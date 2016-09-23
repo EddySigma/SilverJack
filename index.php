@@ -991,10 +991,23 @@ $cardsArrayIndex = [
     echo "<br />Score: ".$score4."<br /><br /></div>";
     
     
-    if($score1 <= 42){
-        
+    if($score1 <= 42 && $score1 > $score2 && $score1 > $score3 && $score1 > $score4){
+        $winner = "Player 1";
     }
     
+    if($score2 <= 42 && $score2 > $score1 && $score2 > $score3 && $score2 > $score4){
+        $winner = "Player 2";
+    }
+    
+    if($score3 <= 42 && $score3 > $score1 && $score3 > $score2 && $score1 > $score4){
+        $winner = "Player 3";
+    }
+    
+    if($score4 <= 42 && $score4 > $score1 && $score4 > $score2 && $score4 > $score3){
+        $winner = "Player 2";
+    }
+    
+    echo "The winner is ".$winner.".<br />";
 ?>
 
 
