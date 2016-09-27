@@ -53,3 +53,9 @@ body {
     background-color:blue;
     color: white;
 }
+
+.winner {
+    text-align:center;
+    color:orange;
+    background-color: black;
+}

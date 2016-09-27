@@ -66,14 +66,19 @@
         
         // -----------------------------------------------------------------------------
         function makePlayers($hands) {
+            $names = array("red", "blue", "yellow", "white");
             $players = array();
+            
+            $i = 0;
             
             foreach($hands as $aHand) {
                 $player = array(
                     "hand" => $aHand,
                     "pic" => "GenericUser.png",
+                    "name" => $names[$i],
                 );
                 array_push($players, $player);
+                $i+=1;
             }
             return $players;
         }
@@ -84,9 +89,9 @@
             echo "<img class='card' src='img/" . $cardLocation["suit"] . "/" . $cardLocation["val"] . ".png'>";
         }
         
-        function displayPlayerPic($player) {
+        function displayPlayerPic($name) {
             echo "<div class='picture'>";
-            echo "<img class='player_pic' src='img/" . $player["pic"] . "'>";
+            echo "<img class='player_pic' src='img/" . $name . ".gif'>";
             echo "</div>";
         }
         
@@ -105,17 +110,47 @@
             echo "</div>";
         }
         
+        function determineVictor($players)
+        {
+            $scores = array();
+            foreach ($players as $player) {
+                if($player["hand"]["score"] > 42){
+                    $player["hand"]["score"] = 0;
+                }
+                
+                $playerScore = array(
+                    "name" => $player["name"],
+                    "score" => $player["hand"]["score"],
+                    );
+                array_push($scores, $playerScore);
+            }
+            
+            $scoreList = array();
+            foreach ($scores as $key => $value) {
+                $scoreList[$key] = $value["score"];
+            }
+            array_multisort($scoreList, SORT_DESC, $scores);
+            //print_r ($scoreList);
+            
+            if($scores[0]["score"] == $scores[1]["score"]) {
+                return "tie";
+            } else {
+                return $scores[0]["name"];
+            }
+        }
+        
         function displayPlayer($player){
             // space for the player
             echo "<div class='player'>";
             
             // picture
-            displayPlayerPic($player);
+            displayPlayerPic($player["name"]);
             // hand
             displayHand($player["hand"]);
             // score
             displayScore($player["hand"]);
             //print_r ($player);
+            
             
             echo "</div>";
         }
@@ -130,7 +165,12 @@
             displayPlayer($aPlayer);
         }
         echo "</div>";
-
+        $winner = determineVictor($allPlayers);
+        if($winner == "tie") {
+            echo "<h1 class='winner'>Tie</h1>";
+        } else {
+            echo "<h1 class='winner'>" . $winner . " wins </h1>";
+        }
     ?>
     </body>
 </html>
